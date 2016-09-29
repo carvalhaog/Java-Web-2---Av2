@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>.:: Sistema de Fiscalização de Serviços ao Consumidor - SIFISCON ::.</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink action="#{fornecedorBean.voltarHome}">
+			<h:outputText value="Home" />
+		</h:commandLink>
+		<h1>Lista de Fornecedores</h1>
+
+		<p:commandButton value="Novo Fornecedor"
+			action="#{fornecedorBean.novoFornecedor}" />
+	</h:form>
+
+	<p:dataTable id="tabelaFornecedores"
+		value="#{fornecedorBean.fornecedores}" var="fornecedor">
+		<p:column>
+			<f:facet name="header">CNPJ</f:facet>
+			<h:outputText value="#{fornecedor.cnpj}" />
+		</p:column>
+
+		<p:column>
+			<f:facet name="header">Razão Social</f:facet>
+			<h:outputText value="#{fornecedor.razaoSocial}" />
+		</p:column>
+
+		<p:column>
+			<f:facet name="header">Inscrição Municipal</f:facet>
+			<h:outputText value="#{fornecedor.inscricaoMunicipal}" />
+		</p:column>
+
+		<p:column>
+			<f:facet name="header">Receita Bruta</f:facet>
+			<h:outputText value="#{fornecedor.receitaBruta}" />
+		</p:column>
+	</p:dataTable>
+</h:body>
+</html>
+

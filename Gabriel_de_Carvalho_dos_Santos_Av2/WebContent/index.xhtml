@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>.:: Sistema de Fiscalização de Serviços ao Consumidor - SIFISCON  ::.</title>
+</h:head>
+<h:body>
+	<center>
+		<h1>Sistema de Fiscalização de Servicos ao Consumidor</h1>
+		
+		<h:form>
+			<p:commandButton value="Processos" action="#{processoBean.listarProcessos}" />
+			<p:commandButton value="Fornecedores" action="#{fornecedorBean.listarFornecedores}" />
+		</h:form>
+	</center>
+</h:body>
+</html>

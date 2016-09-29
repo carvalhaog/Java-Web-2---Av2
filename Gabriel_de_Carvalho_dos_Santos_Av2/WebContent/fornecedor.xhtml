@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>.:: Sistema de Fiscalização de Serviços ao Consumidor - SIFISCON  ::.</title>
+</h:head>
+<h:body>
+	<h1>Novo Fornecedor</h1>
+	<h:form>
+		<p:panel id="painel" header="Novo Processo">
+		<fieldset>
+			<legend>Dados do fornecedor</legend>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="CNPJ:" for="cnpj" />
+				<p:inputMask id="cnpj" value="#{fornecedorBean.fornecedor.cnpj}" mask="	99.999.999/9999-99" />
+				
+				<p:outputLabel value="Razão Social:" for="razaoSocial" />
+				<p:inputText id="razaoSocial" value="#{fornecedorBean.fornecedor.razaoSocial}" />
+				
+				<p:outputLabel value="Logradouro:" for="logradouro" />
+				<p:inputText id="logradouro" value="#{fornecedorBean.fornecedor.endereco.logradouro}" />
+				
+				<p:outputLabel value="Numero:" for="numero" />
+				<p:inputText id="numero" value="#{fornecedorBean.fornecedor.endereco.numero}" />
+				
+				<p:outputLabel value="Complemento:" for="complemento" />
+				<p:inputText id="complemento" value="#{fornecedorBean.fornecedor.endereco.complemento}" />
+				
+				<p:outputLabel value="Bairro:" for="bairro" />
+				<p:inputText id="bairro" value="#{fornecedorBean.fornecedor.endereco.bairro}" />
+				
+				<p:outputLabel value="CEP:" for="cep" />
+				<p:inputMask id="cep" value="#{fornecedorBean.fornecedor.endereco.cep}" mask="99.999-999" />
+				
+				<p:outputLabel value="Municipio:" for="municipio" />
+				<p:inputText id="municipio" value="#{fornecedorBean.fornecedor.endereco.municipio}" />
+				
+				<p:outputLabel value="Unidade Federativa:" for="uf" />
+				<p:selectOneMenu id="uf" value="#{fornecedorBean.fornecedor.endereco.uf}" style="width:150px">
+                	<f:selectItem itemLabel="AC" itemValue="AC" noSelectionOption="true" />
+                	<f:selectItem itemLabel="AL" itemValue="AL" noSelectionOption="true" />
+                	<f:selectItem itemLabel="AP" itemValue="AP" noSelectionOption="true" />
+                	<f:selectItem itemLabel="AM" itemValue="AM" noSelectionOption="true" />
+                	<f:selectItem itemLabel="BA" itemValue="BA" noSelectionOption="true" />
+                	<f:selectItem itemLabel="CE" itemValue="CE" noSelectionOption="true" />
+                	<f:selectItem itemLabel="DF" itemValue="DF" noSelectionOption="true" />
+                	<f:selectItem itemLabel="ES" itemValue="ES" noSelectionOption="true" />
+                	<f:selectItem itemLabel="GO" itemValue="GO" noSelectionOption="true" />
+                	<f:selectItem itemLabel="MA" itemValue="MA" noSelectionOption="true" />
+                	<f:selectItem itemLabel="MT" itemValue="MT" noSelectionOption="true" />
+                	<f:selectItem itemLabel="MS" itemValue="MS" noSelectionOption="true" />
+                	<f:selectItem itemLabel="MG" itemValue="MG" noSelectionOption="true" />
+                	<f:selectItem itemLabel="PA" itemValue="PA" noSelectionOption="true" />
+                	<f:selectItem itemLabel="PB" itemValue="PB" noSelectionOption="true" />
+                	<f:selectItem itemLabel="PR" itemValue="PR" noSelectionOption="true" />
+                	<f:selectItem itemLabel="PE" itemValue="PE" noSelectionOption="true" />
+                	<f:selectItem itemLabel="PI" itemValue="PI" noSelectionOption="true" />
+                	<f:selectItem itemLabel="RJ" itemValue="RJ" noSelectionOption="true" />
+                	<f:selectItem itemLabel="RN" itemValue="RN" noSelectionOption="true" />
+                	<f:selectItem itemLabel="RS" itemValue="RS" noSelectionOption="true" />
+                	<f:selectItem itemLabel="RO" itemValue="RO" noSelectionOption="true" />
+                	<f:selectItem itemLabel="RR" itemValue="RR" noSelectionOption="true" />
+                	<f:selectItem itemLabel="SC" itemValue="SC" noSelectionOption="true" />
+                	<f:selectItem itemLabel="SP" itemValue="SP" noSelectionOption="true" />
+                	<f:selectItem itemLabel="SE" itemValue="SE" noSelectionOption="true" />
+                	<f:selectItem itemLabel="TO" itemValue="TO" noSelectionOption="true" />
+           		</p:selectOneMenu>
+				
+				<p:outputLabel value="Inscrição Municipal:" for="inscricaoMunicipal" />
+				<p:inputMask id="inscricaoMunicipal" value="#{fornecedorBean.fornecedor.inscricaoMunicipal}" mask="9.999.999-9" />
+				
+				<p:outputLabel value="Receita Bruta:" for="receitaBruta" />
+				<p:inputText id="receitaBruta" value="#{fornecedorBean.fornecedor.receitaBruta}" />
+				
+				<p:commandButton value="Salvar" action="#{fornecedorBean.salvarFornecedor}" />
+				<p:commandButton value="Cancelar" action="#{fornecedorBean.listarFornecedores}" />
+			</h:panelGrid>
+		</fieldset>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

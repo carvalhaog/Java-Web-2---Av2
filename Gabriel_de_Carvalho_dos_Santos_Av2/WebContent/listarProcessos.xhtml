@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>.:: Sistema de Fiscalização de Serviços ao Consumidor - SIFISCON ::.</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink action="#{processoBean.voltarHome}">
+			<h:outputText value="Home" />
+		</h:commandLink>
+		<h1>Lista de Processos</h1>
+
+		<p:commandButton value="Novo Processo"
+			action="#{processoBean.novoProcesso}" />
+
+		<br />
+		<h:commandLink>
+			<p:graphicImage name="images/pdf.jpg" width="40" heigth="60" />
+			<p:dataExporter type="pdf" target="exportTable"
+				fileName="Relatório_de_Processos" />
+		</h:commandLink>
+
+		<p:dataTable id="exportTable" value="#{processoBean.processos}"
+			var="processo" rendered="false">
+			<p:column>
+				<f:facet name="header">Número do Processo</f:facet>
+				<h:outputText value="#{processo.numeroProcesso}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Razão Social / CNPJ do Fornecedor</f:facet>
+				<h:outputText
+					value="#{processo.fornecedor.razaoSocial} / #{processo.fornecedor.cnpj}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Fiscal Responsável</f:facet>
+				<h:outputText value="#{processo.fiscalResponsavel}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Relato do Ocorrido</f:facet>
+				<h:outputText value="#{processo.relatoFiscalizacao}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Data do Relato</f:facet>
+				<h:outputText value="#{processo.dataRelato}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:dataTable id="tabelaProcessos" value="#{processoBean.processos}"
+			var="processo">
+			<p:column>
+				<f:facet name="header">Número do Processo</f:facet>
+				<h:outputText value="#{processo.numeroProcesso}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Razão Social / CNPJ do Fornecedor</f:facet>
+				<h:outputText
+					value="#{processo.fornecedor.razaoSocial} / #{processo.fornecedor.cnpj}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Fiscal Responsável</f:facet>
+				<h:outputText value="#{processo.fiscalResponsavel}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Data do Relato</f:facet>
+				<h:outputText value="#{processo.dataRelato}" />
+			</p:column>
+			<p:column exportable="false">
+				<p:commandButton value="Editar"
+					action="#{processoBean.editar(processo)}" />
+				<p:commandButton value="Excluir" action="#{processoBean.excluir(processo)}" update="@form">
+					<p:confirm header="Confirmar exclusão" message="Tem certeza que deseja excluir este processo?" icon="ui-icon-alert" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+		
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        	<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        	<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    	</p:confirmDialog>
+	</h:form>
+</h:body>
+</html>
+

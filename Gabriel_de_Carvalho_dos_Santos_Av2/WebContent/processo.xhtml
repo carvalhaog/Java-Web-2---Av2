@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>.:: Sistema de Fiscalização de Serviços ao Consumidor -
+		SIFISCON ::.</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="painel" header="Processo">
+			<fieldset>
+				<legend>Dados do Processo</legend>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="CNPJ:" for="cnpj" />
+					<p:inputMask id="cnpj" value="#{processoBean.processo.fornecedor.cnpj}" mask="	99.999.999/9999-99" />
+
+					<p:commandButton value="Buscar CNPJ" update="painel" action="#{processoBean.buscarFornecedor}" />
+					<!-- <p:outputLabel value="" for="" /> -->
+
+					<p:outputLabel value="Razão Social:" for="razaoSocial" />
+					<p:inputText id="razaoSocial" value="#{processoBean.processo.fornecedor.razaoSocial}"
+						disabled="true" />
+
+					<p:outputLabel value="Logradouro:" for="logradouro" />
+					<p:inputText id="logradouro" value="#{processoBean.processo.fornecedor.endereco.logradouro}"
+						disabled="true" />
+
+					<p:outputLabel value="Numero:" for="numero" />
+					<p:inputText id="numero" value="#{processoBean.processo.fornecedor.endereco.numero}"
+						disabled="true" />
+
+					<p:outputLabel value="Complemento:" for="complemento" />
+					<p:inputText id="complemento" value="#{processoBean.processo.fornecedor.endereco.complemento}"
+						disabled="true" />
+
+					<p:outputLabel value="Bairro:" for="bairro" />
+					<p:inputText id="bairro" value="#{processoBean.processo.fornecedor.endereco.bairro}"
+						disabled="true" />
+
+					<p:outputLabel value="CEP:" for="cep" />
+					<p:inputMask id="cep" value="#{processoBean.processo.fornecedor.endereco.cep}" mask="99.999-999"
+						disabled="true" />
+
+					<p:outputLabel value="Municipio:" for="municipio" />
+					<p:inputText id="municipio"	value="#{processoBean.processo.fornecedor.endereco.municipio}"
+						disabled="true" />
+
+					<p:outputLabel value="Unidade Federativa:" for="uf" />
+					<p:inputText id="uf" value="#{processoBean.processo.fornecedor.endereco.uf}"
+						disabled="true" />
+
+					<p:outputLabel value="Inscrição Municipal:"	for="inscricaoMunicipal" />
+					<p:inputText id="inscricaoMunicipal" value="#{processoBean.processo.fornecedor.inscricaoMunicipal}"	disabled="true" />
+
+					<p:outputLabel value="Relato da Fiscalização:" for="relatoFiscalizacao" />
+					<p:inputTextarea id="relatoFiscalizacao" value="#{processoBean.processo.relatoFiscalizacao}" />
+
+					<p:outputLabel value="Data do Relato:" for="dataRelato" />
+					<p:calendar id="dataRelato" value="#{processoBean.processo.dataRelato}" showOn="button" />
+
+					<p:outputLabel value="Fiscal Responsável:" for="fiscalResponsavel" />
+					<p:inputText id="fiscalResponsavel"	value="#{processoBean.processo.fiscalResponsavel}" />
+
+					<p:commandButton value="Salvar"	action="#{processoBean.salvarProcesso}" onClick="PF('processoSucesso').show();" />
+					<p:commandButton value="Cancelar" action="#{processoBean.listarProcessos}" />
+				</h:panelGrid>
+			</fieldset>
+		</p:panel>
+		
+		<p:dialog header="Processo cadastrado" widgetVar="processoSucesso" modal="true" height="100">
+   			<h:outputText value="Processo cadastrado com sucesso!" />
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
